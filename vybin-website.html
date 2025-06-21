@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VYBIN™ - Evidence-Based Wellness Technology</title>
+    <meta name="description" content="AI-powered wellness check-ins built on SAMHSA's 8-dimensional framework. Person-centered technology for individual wellness, clinical practice, and organizational health.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #5a4fcf;
+        }
+
+        .logo .v-green {
+            color: #28a745;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #5a4fcf;
+        }
+
+        .cta-nav {
+            background: #5a4fcf;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-nav:hover {
+            background: #4a3fb9;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8rem 0 4rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #5a4fcf;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: #5a4fcf;
+        }
+
+        /* Evidence Section */
+        .evidence {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .evidence-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .evidence-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .evidence-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Target Audiences */
+        .audiences {
+            padding: 4rem 0;
+        }
+
+        .audience-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.75rem 1.5rem;
+            background: #f0f2f5;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            background: #5a4fcf;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .tab-content h3 {
+            color: #5a4fcf;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Founder Section */
+        .founder {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .founder-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .founder-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            color: white;
+        }
+
+        .credentials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .credential {
+            background: #5a4fcf;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Demo Section */
+        .demo {
+            padding: 4rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .demo h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Partnership */
+        .partnership {
+            padding: 4rem 0;
+            background: #f8f9fa;
+            text-align: center;
+        }
+
+        .partnership-logo {
+            font-size: 4rem;
+            color: #dc143c;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact */
+        .contact {
+            padding: 4rem 0;
+            background: #2c3e50;
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .contact-method {
+            text-align: center;
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a252f;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .founder-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .founder-image {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <span class="v-green">V</span>YBIN™
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#audiences">Solutions</a></li>
+                <li><a href="#founder">About</a></li>
+                <li><a href="#partnership">Research</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="https://tinyurl.com/vybinapp" class="cta-nav" target="_blank">Try Demo</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Person-Centered AI for Human Flourishing</h1>
+            <p class="subtitle">Evidence-based wellness technology built on SAMHSA's 8-dimensional framework. Authentic, accessible, and designed by someone who understands the journey.</p>
+            <div class="hero-ctas">
+                <a href="https://tinyurl.com/vybinapp" class="btn btn-primary" target="_blank">Experience Demo</a>
+                <a href="#audiences" class="btn btn-outline">Explore Solutions</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Evidence Section -->
+    <section class="evidence">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 1rem; font-size: 2.5rem;">Built on Proven Science</h2>
+            <p style="text-align: center; font-size: 1.2rem; color: #666; margin-bottom: 3rem;">Not another wellness app. Evidence-based technology with authentic credibility.</p>
+            
+            <div class="evidence-grid">
+                <div class="evidence-card">
+                    <div class="evidence-icon">🏛️</div>
+                    <h3>SAMHSA Framework</h3>
+                    <p>Built on the federally-recognized 8-dimensional wellness model adopted by the US Department of Health and Human Services.</p>
+                </div>
+                <div class="evidence-card">
+                    <div class="evidence-icon">🎓</div>
+                    <h3>Academic Partnership</h3>
+                    <p>Active collaboration with Dr. Peggy Swarbrick, creator of the framework at Rutgers University's Center for Substance Use Studies.</p>
+                </div>
+                <div class="evidence-card">
+                    <div class="evidence-icon">🤝</div>
+                    <h3>Lived Experience</h3>
+                    <p>Created by a Certified Veteran Peer Support Specialist with authentic understanding of recovery and wellness journeys.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Audiences -->
+    <section class="audiences" id="audiences">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2.5rem;">Solutions for Every Wellness Journey</h2>
+            
+            <div class="audience-tabs">
+                <button class="tab-btn active" onclick="showTab('individuals')">Individuals</button>
+                <button class="tab-btn" onclick="showTab('professionals')">Professionals</button>
+                <button class="tab-btn" onclick="showTab('institutions')">Organizations</button>
+                <button class="tab-btn" onclick="showTab('research')">Research</button>
+            </div>
+
+            <div id="individuals" class="tab-content active">
+                <h3>Personal Wellness Technology</h3>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">Daily check-ins that actually understand your journey, powered by frontier AI and evidence-based insights.</p>
+                
+                <div class="features-grid">
+                    <div class="feature">
+                        <div class="feature-icon">📱</div>
+                        <h4>8-Dimensional Assessment</h4>
+                        <p>Complete wellness picture across Physical, Emotional, Social, Financial, Occupational, Intellectual, Environmental, and Spiritual dimensions.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🤖</div>
+                        <h4>AI-Powered Insights</h4>
+                        <p>Personalized guidance with communication style options: warm and conversational or brief and direct.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🎯</div>
+                        <h4>Verified Resources</h4>
+                        <p>Trusted connections to 211, 988, HRSA, and other verified support services when you need them.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🗣️</div>
+                        <h4>Voice Accessibility</h4>
+                        <p>Complete speech-to-text and text-to-speech integration for inclusive wellness support.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="professionals" class="tab-content">
+                <h3>Clinical Practice Enhancement</h3>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">Tools you can confidently recommend, built on research you trust, by someone who understands your work.</p>
+                
+                <div class="features-grid">
+                    <div class="feature">
+                        <div class="feature-icon">📊</div>
+                        <h4>Provider Dashboard</h4>
+                        <p>Track client wellness trends across all 8 dimensions with clinical-grade reporting and insights.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🏥</div>
+                        <h4>EHR Integration</h4>
+                        <p>Seamless workflow integration with existing healthcare systems and electronic health records.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">📋</div>
+                        <h4>Evidence-Based Assessment</h4>
+                        <p>Likert scale methodology with SAMHSA-validated framework for reliable clinical outcomes.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🤝</div>
+                        <h4>Peer Support Focus</h4>
+                        <p>Designed specifically to complement and enhance peer support services and therapeutic relationships.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="institutions" class="tab-content">
+                <h3>Organizational Wellness Solutions</h3>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">Scalable wellness technology for healthcare systems, employee assistance programs, and population health initiatives.</p>
+                
+                <div class="features-grid">
+                    <div class="feature">
+                        <div class="feature-icon">🏢</div>
+                        <h4>Enterprise Dashboard</h4>
+                        <p>Population health analytics, trend identification, and outcome measurement for large-scale wellness programs.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">💰</div>
+                        <h4>Reimbursement Ready</h4>
+                        <p>Clinical evidence and outcome data designed to support insurance reimbursement and value-based care models.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🔒</div>
+                        <h4>HIPAA Compliance</h4>
+                        <p>Enterprise-grade security and compliance for healthcare organizations and employee assistance programs.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">📈</div>
+                        <h4>ROI Measurement</h4>
+                        <p>Track wellness program effectiveness with quantifiable outcomes and cost-benefit analysis.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="research" class="tab-content">
+                <h3>Research & Academic Collaboration</h3>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">Platform designed for rigorous research with built-in data collection, outcome measurement, and academic partnership capabilities.</p>
+                
+                <div class="features-grid">
+                    <div class="feature">
+                        <div class="feature-icon">🔬</div>
+                        <h4>Clinical Trial Platform</h4>
+                        <p>Multi-site trial management, IRB compliance tools, and research participant management systems.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">📊</div>
+                        <h4>Data Analytics</h4>
+                        <p>Comprehensive outcome measurement with validated clinical instruments and statistical analysis capabilities.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🏛️</div>
+                        <h4>Federal Funding</h4>
+                        <p>Currently seeking $300K-$2M in NIH SBIR funding for clinical validation and evidence generation.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">📚</div>
+                        <h4>Publication Ready</h4>
+                        <p>Research-grade data collection and analysis designed to support peer-reviewed publication and dissemination.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section class="founder" id="founder">
+        <div class="container">
+            <div class="founder-content">
+                <div class="founder-image">👩‍💻</div>
+                <div>
+                    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Built by Someone Who Gets It</h2>
+                    <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">Marcilla Smith brings unique founder-market fit as an award-winning former Certified Veteran Peer Support Specialist with lived recovery experience and technical expertise from military communications and the Department of Labor's AI Academy.</p>
+                    
+                    <div class="credentials">
+                        <span class="credential">Certified Veteran Peer Support Specialist</span>
+                        <span class="credential">Former Military Communications Officer</span>
+                        <span class="credential">DOL AI Academy Graduate</span>
+                        <span class="credential">Recovery Community Leader</span>
+                    </div>
+                    
+                    <p style="margin-top: 1.5rem; font-style: italic;">"I'm developing the tools that I've been wanting to support my own wellness journey. This authenticity can't be easily replicated by traditional tech founders."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="demo">
+        <div class="container">
+            <h2>Experience VYBIN™ Today</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Try our fully functional demo and see the difference evidence-based wellness technology makes.</p>
+            <a href="https://tinyurl.com/vybinapp" class="btn btn-primary" target="_blank" style="font-size: 1.2rem;">Try Demo Now</a>
+            <p style="margin-top: 1rem; opacity: 0.9;">Demo credentials: username "demo" | password "demo123"</p>
+        </div>
+    </section>
+
+    <!-- Partnership Section -->
+    <section class="partnership" id="partnership">
+        <div class="container">
+            <div class="partnership-logo">🎓</div>
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Academic Research Partnership</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Active collaboration with Dr. Peggy Swarbrick, Research Professor and Associate Director at Rutgers University's Center for Substance Use Studies and creator of the SAMHSA 8-dimensional wellness framework.</p>
+            <p style="font-style: italic; color: #666;">"VYBIN™ represents the practical application of evidence-based wellness science, making research-validated approaches accessible to everyone who needs them."</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2.5rem;">Let's Connect</h2>
+            
+            <div class="contact-grid">
+                <div class="contact-method">
+                    <div class="contact-icon">📧</div>
+                    <h3>Business Inquiries</h3>
+                    <p>marcilla.smith@gmail.com</p>
+                </div>
+                <div class="contact-method">
+                    <div class="contact-icon">🏢</div>
+                    <h3>Redemption Labs LLC</h3>
+                    <p>Washington State<br>EIN: 39-2619524</p>
+                </div>
+                <div class="contact-method">
+                    <div class="contact-icon">🤝</div>
+                    <h3>Partnerships</h3>
+                    <p>Clinical collaborations<br>Research opportunities<br>Institutional partnerships</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Redemption Labs LLC. VYBIN™ is a trademark of Redemption Labs LLC.</p>
+            <p style="margin-top: 0.5rem; opacity: 0.8;">Person-centered AI for human flourishing.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            
+            // Activate corresponding button
+            event.target.classList.add('active');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
