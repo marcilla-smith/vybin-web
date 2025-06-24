@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VYBIN™ - Evidence-Based Wellness Technology</title>
+    <title>VYBIN™ - Wellness Technology</title>
     <meta name="description" content="AI-powered wellness check-ins built on SAMHSA's 8-dimensional framework. Person-centered technology for individual wellness, clinical practice, and organizational health.">
     <style>
         * {
@@ -217,21 +217,46 @@
             font-size: 2rem;
         }
 
+        /* FIXED: Features Grid - No More Orphaned 4th Feature */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            padding: 30px 0;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .feature {
+            background: white;
             text-align: center;
             padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
         }
 
         .feature-icon {
             font-size: 2.5rem;
             margin-bottom: 1rem;
+        }
+
+        .feature h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .feature p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
         }
 
         /* Founder Section */
@@ -349,6 +374,23 @@
             .founder-image {
                 margin: 0 auto;
             }
+
+            /* Mobile: Stack features in single column */
+            .features-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .features-grid {
+                padding: 20px 0;
+            }
+            
+            .feature {
+                padding: 1.25rem;
+            }
         }
     </style>
 </head>
@@ -373,8 +415,8 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
-            <h1>Person-Centered AI for Human Flourishing</h1>
-            <p class="subtitle">Evidence-based wellness technology built on SAMHSA's 8-dimensional framework. Authentic, accessible, and designed by someone who understands the journey.</p>
+            <h1>The Wellness App with Personalized Insights</h1>
+            <p class="subtitle">Wellness technology built on SAMHSA's 8-dimensional framework, enhanced with Artificial Intelligence. Designed by a fellow traveller on the journey.</p>
             <div class="hero-ctas">
                 <a href="https://tinyurl.com/vybinapp" class="btn btn-primary" target="_blank">Experience Demo</a>
                 <a href="#audiences" class="btn btn-outline">Explore Solutions</a>
@@ -386,7 +428,7 @@
     <section class="evidence">
         <div class="container">
             <h2 style="text-align: center; margin-bottom: 1rem; font-size: 2.5rem;">Built on Proven Science</h2>
-            <p style="text-align: center; font-size: 1.2rem; color: #666; margin-bottom: 3rem;">Not another wellness app. Evidence-based technology with authentic credibility.</p>
+            <p style="text-align: center; font-size: 1.2rem; color: #666; margin-bottom: 3rem;">Not another wellness app. Technology based on research with authentic credibility.</p>
             
             <div class="evidence-grid">
                 <div class="evidence-card">
@@ -397,12 +439,12 @@
                 <div class="evidence-card">
                     <div class="evidence-icon">🎓</div>
                     <h3>Academic Partnership</h3>
-                    <p>Active collaboration with Dr. Peggy Swarbrick, creator of the framework at Rutgers University's Center for Substance Use Studies.</p>
+                    <p>Designed with input from academics, including the developer of the 8-dimensional framework.</p>
                 </div>
                 <div class="evidence-card">
                     <div class="evidence-icon">🤝</div>
                     <h3>Lived Experience</h3>
-                    <p>Created by a Certified Veteran Peer Support Specialist with authentic understanding of recovery and wellness journeys.</p>
+                    <p>Created by an award-winning former Certified Veteran Peer Support Specialist with authentic understanding of wellness and recovery journeys.</p>
                 </div>
             </div>
         </div>
@@ -422,7 +464,7 @@
 
             <div id="individuals" class="tab-content active">
                 <h3>Personal Wellness Technology</h3>
-                <p style="font-size: 1.2rem; margin-bottom: 2rem;">Daily check-ins that actually understand your journey, powered by frontier AI and evidence-based insights.</p>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">Daily check-ins that respond to your journey with personalized insights, powered by frontier AI.</p>
                 
                 <div class="features-grid">
                     <div class="feature">
@@ -605,6 +647,7 @@
     <footer>
         <div class="container">
             <p>&copy; 2025 Redemption Labs LLC. VYBIN™ is a trademark of Redemption Labs LLC.</p>
+            <p style="margin-top: 0.5rem; opacity: 0.8;">VYBIN™ is a product of Redemption Labs LLC, Washington</p>
             <p style="margin-top: 0.5rem; opacity: 0.8;">Person-centered AI for human flourishing.</p>
         </div>
     </footer>
